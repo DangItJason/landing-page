@@ -106,7 +106,7 @@ async function submitToEmailService(email) {
     // You can replace this with Mailchimp, ConvertKit, or other services
     
     try {
-        const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+        const response = await fetch('https://formspree.io/f/xzzvgjzr', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -124,10 +124,8 @@ async function submitToEmailService(email) {
             throw new Error('Network response was not ok');
         }
     } catch (error) {
-        // Fallback: For now, simulate success for demo purposes
-        // In production, you'd want proper error handling
-        console.log('Would submit email to service:', email);
-        return { success: true };
+        console.error('Formspree submission error:', error);
+        return { success: false, message: 'Failed to submit to Formspree' };
     }
 }
 
