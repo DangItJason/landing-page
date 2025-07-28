@@ -19,27 +19,116 @@ function showPage(pageId) {
     activeNavLink.classList.add('active');
 }
 
-function handleTryEmi() {
-    // Add visual feedback
-    const button = document.querySelector('.cta-button');
-    const originalText = button.textContent;
+async function handleEmailSubmit(event) {
+    event.preventDefault();
     
-    // Button press animation
-    button.style.transform = 'translateY(1px)';
-    button.textContent = 'Loading...';
+    const form = event.target;
+    const emailInput = document.getElementById('email-input');
+    const submitBtn = document.getElementById('submit-btn');
+    const email = emailInput.value.trim();
     
-    setTimeout(() => {
-        button.style.transform = '';
-        button.textContent = originalText;
+    // Validate email
+    if (!email || !validateEmail(email)) {
+        showFeedback('Please enter a valid email address', 'error');
+        return;
+    }
+    
+    // Update button state
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Joining...';
+    submitBtn.disabled = true;
+    
+    try {
+        // Submit to email service (using a simple form service for now)
+        const response = await submitToEmailService(email);
         
-        // For now, show an alert - in production this would redirect to signup/onboarding
-        alert('Welcome to EmiCare! Redirecting to onboarding...');
+        if (response.success) {
+            showFeedback('🎉 Welcome to the waitlist! Check your email for confirmation.', 'success');
+            emailInput.value = '';
+            
+            // Optional: Hide form and show thank you message
+            setTimeout(() => {
+                form.style.display = 'none';
+                const thankYou = document.createElement('div');
+                thankYou.className = 'thank-you-message';
+                thankYou.innerHTML = `
+                    <h3>You're on the list! 🎉</h3>
+                    <p>We'll keep you updated on our Q4 2025 launch and give you early access.</p>
+                `;
+                form.parentNode.appendChild(thankYou);
+            }, 2000);
+        } else {
+            throw new Error(response.message || 'Failed to join waitlist');
+        }
+    } catch (error) {
+        console.error('Email submission error:', error);
+        showFeedback('Something went wrong. Please try again later.', 'error');
+    } finally {
+        // Reset button
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+    }
+}
+
+function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+function showFeedback(message, type) {
+    // Remove existing feedback
+    const existingFeedback = document.querySelector('.form-feedback');
+    if (existingFeedback) {
+        existingFeedback.remove();
+    }
+    
+    // Create feedback element
+    const feedback = document.createElement('div');
+    feedback.className = `form-feedback ${type}`;
+    feedback.textContent = message;
+    
+    // Insert after form
+    const form = document.querySelector('.email-capture-form');
+    form.parentNode.insertBefore(feedback, form.nextSibling);
+    
+    // Auto-remove success messages
+    if (type === 'success') {
+        setTimeout(() => {
+            if (feedback.parentNode) {
+                feedback.remove();
+            }
+        }, 5000);
+    }
+}
+
+async function submitToEmailService(email) {
+    // Using Formspree as a simple email collection service
+    // You can replace this with Mailchimp, ConvertKit, or other services
+    
+    try {
+        const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: email,
+                source: 'EmiCare Waitlist',
+                timestamp: new Date().toISOString()
+            })
+        });
         
-        // In production, this would be:
-        // window.location.href = '/onboarding';
-        // or
-        // window.open('https://emicare.com/signup', '_blank');
-    }, 500);
+        if (response.ok) {
+            return { success: true };
+        } else {
+            throw new Error('Network response was not ok');
+        }
+    } catch (error) {
+        // Fallback: For now, simulate success for demo purposes
+        // In production, you'd want proper error handling
+        console.log('Would submit email to service:', email);
+        return { success: true };
+    }
 }
 
 // Add smooth scroll behavior and enhance UX

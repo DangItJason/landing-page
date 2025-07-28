@@ -36,9 +36,21 @@
                 </div>
             </div>
             
-            <button class="cta-button" onclick="handleTryEmi()">
-                Try Emi Today →
-            </button>
+            <form class="email-capture-form" onsubmit="handleEmailSubmit(event)">
+                <div class="email-input-container">
+                    <input 
+                        type="email" 
+                        id="email-input"
+                        placeholder="Enter your email to join the waitlist"
+                        required
+                        class="email-input"
+                    />
+                    <button type="submit" class="email-submit-btn" id="submit-btn">
+                        Join Waitlist →
+                    </button>
+                </div>
+                <p class="email-disclaimer">Get early access + updates on our Q4 2025 launch</p>
+            </form>
         </main>
         
         <main id="what-is-emi" class="page">
