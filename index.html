@@ -13,9 +13,14 @@
     <div class="container">
         <header>
             <h1 class="logo">EmiCare</h1>
+            <nav class="nav">
+                <a href="#home" class="nav-link active" onclick="showPage('home')">Home</a>
+                <a href="#what-is-emi" class="nav-link" onclick="showPage('what-is-emi')">What is Emi?</a>
+                <a href="#about-us" class="nav-link" onclick="showPage('about-us')">About Us</a>
+            </nav>
         </header>
         
-        <main class="hero">
+        <main id="home" class="page active hero">
             <h2 class="hero-title">Caregiving is f***ing hard.</h2>
             
             <div class="hero-content">
@@ -34,6 +39,46 @@
             <button class="cta-button" onclick="handleTryEmi()">
                 Try Emi Today →
             </button>
+        </main>
+        
+        <main id="what-is-emi" class="page">
+            <div class="page-content">
+                <h2 class="page-title">What is Emi?</h2>
+                <div class="content-section">
+                    <p>Emi is your personal AI caregiver copilot designed specifically for the unique challenges of caregiving. Built by caregivers who understand the daily struggles, Emi transforms the overwhelming chaos of care coordination into a manageable, organized system.</p>
+                    
+                    <h3>Key Features:</h3>
+                    <ul class="feature-list">
+                        <li><strong>Care Coordination:</strong> Track appointments, medications, and care plans in one place</li>
+                        <li><strong>Smart Reminders:</strong> Never miss important medications or appointments again</li>
+                        <li><strong>Health Monitoring:</strong> Log symptoms, vitals, and progress with intelligent insights</li>
+                        <li><strong>Communication Hub:</strong> Coordinate with healthcare providers, family, and care team</li>
+                        <li><strong>Emergency Preparedness:</strong> Quick access to critical information when it matters most</li>
+                    </ul>
+                    
+                    <p>Emi understands that caregiving isn't just about medical tasks—it's about maintaining dignity, fostering connection, and finding moments of peace in the storm. Our AI learns your unique situation and adapts to provide personalized support that actually helps.</p>
+                </div>
+            </div>
+        </main>
+        
+        <main id="about-us" class="page">
+            <div class="page-content">
+                <h2 class="page-title">About Us</h2>
+                <div class="content-section">
+                    <p>EmiCare was born from lived experience. Our team consists of current and former caregivers who have walked this difficult path and understand the daily reality of caring for loved ones.</p>
+                    
+                    <h3>Our Mission</h3>
+                    <p>To empower caregivers with intelligent tools that reduce stress, improve care outcomes, and preserve the human connection that makes caregiving meaningful.</p>
+                    
+                    <h3>Why We Built Emi</h3>
+                    <p>Traditional healthcare technology wasn't designed for the complex, emotional reality of family caregiving. We've experienced firsthand the frustration of juggling multiple apps, paper records, and endless phone calls while trying to provide the best care possible.</p>
+                    
+                    <p>Emi is different because it's built by people who get it. We understand that 3 AM medication questions can't wait, that coordinating care across multiple providers is exhausting, and that sometimes you just need someone to tell you that you're doing a good job.</p>
+                    
+                    <h3>Coming Q4 2025</h3>
+                    <p>We're currently in development, working closely with caregivers to ensure Emi meets real needs. Join our early access program to be among the first to experience a caregiving copilot that truly understands.</p>
+                </div>
+            </div>
         </main>
     </div>
     

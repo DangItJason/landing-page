@@ -28,6 +28,11 @@ header {
     position: absolute;
     top: 40px;
     left: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
 }
 
 .logo {
@@ -36,6 +41,31 @@ header {
     font-weight: 600;
     color: #2D2D2D;
     letter-spacing: -0.4px;
+}
+
+.nav {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+}
+
+.nav-link {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #666;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    letter-spacing: -0.1px;
+}
+
+.nav-link:hover {
+    color: #2D2D2D;
+}
+
+.nav-link.active {
+    color: #2D2D2D;
+    font-weight: 600;
 }
 
 .hero {
@@ -118,6 +148,77 @@ header {
     box-shadow: 0 2px 15px rgba(248, 249, 250, 0.15);
 }
 
+/* Page system */
+.page {
+    display: none;
+    text-align: left;
+    max-width: 800px;
+    margin-left: 0;
+}
+
+.page.active {
+    display: block;
+}
+
+.page-content {
+    padding-top: 40px;
+}
+
+.page-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 600;
+    color: #2D2D2D;
+    line-height: 1.1;
+    margin-bottom: 40px;
+    letter-spacing: -1.5px;
+}
+
+.content-section {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    max-width: 700px;
+}
+
+.content-section p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #2D2D2D;
+    margin-bottom: 24px;
+    opacity: 0.9;
+}
+
+.content-section h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #2D2D2D;
+    margin: 32px 0 16px 0;
+    letter-spacing: -0.3px;
+}
+
+.feature-list {
+    margin: 20px 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+.feature-list li {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #2D2D2D;
+    margin-bottom: 16px;
+    padding-left: 24px;
+    position: relative;
+    opacity: 0.9;
+}
+
+.feature-list li:before {
+    content: "•";
+    color: #666;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
 @media (max-width: 768px) {
     .container {
         padding: 20px;
@@ -126,10 +227,21 @@ header {
     header {
         position: static;
         margin-bottom: 60px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
     }
     
     .logo {
         font-size: 24px;
+    }
+    
+    .nav {
+        gap: 24px;
+    }
+    
+    .nav-link {
+        font-size: 14px;
     }
     
     .hero-title {
@@ -157,6 +269,25 @@ header {
         padding: 16px 32px;
         width: 100%;
         max-width: 280px;
+    }
+    
+    .page-title {
+        font-size: clamp(28px, 8vw, 48px);
+        margin-bottom: 30px;
+    }
+    
+    .content-section p {
+        font-size: 16px;
+    }
+    
+    .content-section h3 {
+        font-size: 20px;
+        margin: 24px 0 12px 0;
+    }
+    
+    .feature-list li {
+        font-size: 16px;
+        margin-bottom: 12px;
     }
 }
 

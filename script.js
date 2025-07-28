@@ -1,3 +1,24 @@
+function showPage(pageId) {
+    // Hide all pages
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => {
+        page.classList.remove('active');
+    });
+    
+    // Show selected page
+    const selectedPage = document.getElementById(pageId);
+    selectedPage.classList.add('active');
+    
+    // Update navigation active state
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+    });
+    
+    const activeNavLink = document.querySelector(`[onclick="showPage('${pageId}')"]`);
+    activeNavLink.classList.add('active');
+}
+
 function handleTryEmi() {
     // Add visual feedback
     const button = document.querySelector('.cta-button');
