@@ -238,10 +238,12 @@ header {
     font-family: 'Inter', sans-serif;
     font-size: 14px;
     color: #666;
-    text-align: left;
+    text-align: center;
     margin: 0;
     opacity: 0.8;
     letter-spacing: -0.05px;
+    position: relative;
+    left: calc(-80px - 6px);
 }
 
 /* Form feedback */
@@ -474,6 +476,7 @@ header {
     
     .email-disclaimer {
         font-size: 13px;
+        left: 0;
     }
 }
 
