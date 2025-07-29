@@ -96,9 +96,20 @@ header {
     font-weight: 400;
     color: #2D2D2D;
     line-height: 1.42;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     opacity: 0.9;
     letter-spacing: -0.3px;
+}
+
+.hero-description-emphasis {
+    margin-top: 32px;
+    margin-bottom: 40px;
+}
+
+.emi-name {
+    color: #FF6B35;
+    font-weight: 600;
+    position: relative;
 }
 
 .trust-indicators {
@@ -354,6 +365,21 @@ header {
     left: 0;
 }
 
+/* Emi name emphasis */
+.intro-paragraph {
+    font-size: 20px !important;
+    font-style: italic;
+    margin-bottom: 24px !important;
+    opacity: 0.8;
+}
+
+.emi-highlight {
+    color: #D97706;
+    font-weight: 700;
+    font-size: 1.1em;
+    letter-spacing: 0.5px;
+}
+
 @media (max-width: 768px) {
     .container {
         padding: 20px;
@@ -387,6 +413,11 @@ header {
     
     .hero-description {
         font-size: 22px;
+        margin-bottom: 16px;
+    }
+    
+    .hero-description-emphasis {
+        margin-top: 24px;
         margin-bottom: 30px;
     }
     
